@@ -1,0 +1,31 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="WebApplication3.Master" %>
+
+<!DOCTYPE>
+<html>
+<head runat="server">
+    <title></title>
+    <link href="App_Themes/Web/WebStyle.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <h3>
+            Site Name/Title</h3>
+        <div id='cssmenu'>
+            <ul>
+                <li><a href='/default.aspx'><span>Home</span></a></li>
+                <li><a href='#'><span>drgjtydj</span></a></li>
+                <li><a href='#'><span>Products</span></a></li>
+                <li><a href='/aboutus.aspx'><span>About</span></a></li>
+                <li class='last'><a href='#'><span>Contact</span></a></li>
+                <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+            </ul>
+        </div>
+        <asp:ContentPlaceHolder ID="body" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
