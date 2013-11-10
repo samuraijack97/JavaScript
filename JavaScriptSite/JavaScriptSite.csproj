@@ -59,8 +59,15 @@
   <ItemGroup>
     <Content Include="AboutUs.aspx" />
     <Content Include="App_Themes\Student\WebStyle.css" />
+    <Content Include="bin\BCrypt.Net.dll" />
+    <Content Include="bin\JavaScriptSite.dll" />
+    <Content Include="bin\JavaScriptSite.pdb" />
     <Content Include="default.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="packages.config" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MasterFiles\Master.Master" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

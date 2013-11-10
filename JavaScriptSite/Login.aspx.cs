@@ -13,5 +13,20 @@ namespace JavaScriptSite
         {
 
         }
+
+        protected void btnLoginIn_Click(object sender, EventArgs e)
+        {
+            string userName = string.Empty;
+            if (!string.IsNullOrEmpty(Request.Form["name"]))
+            {
+                userName = Request.Form["name"];
+            }
+            else
+            {
+                return;
+            }
+
+            userName = userName.ToLowerInvariant().Trim();
+        }
     }
 }
