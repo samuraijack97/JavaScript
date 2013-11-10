@@ -153,26 +153,20 @@ public static class Database
         }
     }
 
-    /// <summary>
-    /// Executes a stored procedure without returning a value
-    /// </summary>
-    /// <param name="procedureName">The procedure name to execture</param>
-    /// <returns>The object value to be returned</returns>
-    //public static object ExecuteStoredProcedure(string procedureName)
-    //{
-    //    using (SqlConnection conn = new SqlConnection(Connection))
-    //    {
-    //        conn.Open();
-    //        using (SqlCommand cmd = new SqlCommand(procedureName, conn))
-    //        {
-    //            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-    //            // parameter to be sent with the procedure
-    //            cmd.Parameters.AddWithValue("@Value", string.Empty);
-    //            // parameter is made to get a value
-    //            cmd.Parameters["@Value"].Direction = System.Data.ParameterDirection.Output;
-    //            // take that value and return it to the caller
-    //            return cmd.Parameters["@Value"].Value;
-    //        }
-    //    }
-    //}
+    public static object ExecuteSQL(string sql, params SqlParameter[] sqlParameters)
+    {
+        using (SqlConnection conn = new SqlConnection(Connection))
+        {
+            conn.Open();
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            {
+                if (sqlParameters != null)
+                {
+                    cmd.Parameters.AddRange(sqlParameters);
+                }
+
+                return cmd.ExecuteScalar();
+            }
+        }
+    }
 }
