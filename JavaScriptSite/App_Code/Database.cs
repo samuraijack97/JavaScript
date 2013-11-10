@@ -120,7 +120,7 @@ public static class Database
                             foreach (var column in columnNames)
                             {
                                 // adds the column value to the list
-                                columnNames.Add(reader[column].ToString());
+                                columnValues.Add(reader[column].ToString());
                             }
 
                             // adds this whole current records values to list of records
@@ -166,6 +166,23 @@ public static class Database
                 }
 
                 return cmd.ExecuteScalar();
+            }
+        }
+    }
+
+    public static void InsertRecord(string sql, params SqlParameter[] sqlParameters)
+    {
+        using (SqlConnection conn = new SqlConnection(Connection))
+        {
+            conn.Open();
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            {
+                if (sqlParameters != null)
+                {
+                    cmd.Parameters.AddRange(sqlParameters);
+                }
+
+                cmd.ExecuteNonQuery();
             }
         }
     }

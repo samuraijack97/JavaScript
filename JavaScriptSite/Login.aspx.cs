@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,17 +17,41 @@ namespace JavaScriptSite
 
         protected void btnLoginIn_Click(object sender, EventArgs e)
         {
-            string userName = string.Empty;
-            if (!string.IsNullOrEmpty(Request.Form["name"]))
+            string email = string.Empty;
+            if (!string.IsNullOrEmpty(Request.Form["email"]))
             {
-                userName = Request.Form["name"];
+                email = Request.Form["email"];
             }
             else
             {
                 return;
             }
 
-            userName = userName.ToLowerInvariant().Trim();
+            email = email.ToLowerInvariant().Trim();
+
+            string password = txtPassword.Text;
+
+            List<List<string>> username_password = Database.ExecuteSQL("SELECT Password, SaltKey FROM Users(NOLOCK) WHERE Email = @Email;",
+                new List<string>() { "Password", "SaltKey" }, new List<SqlParameter>() { new SqlParameter("@Email", email) });
+
+            if (username_password == null)
+            {
+                return;
+            }
+
+            string encryptedPassword = BCrypt.Net.BCrypt.HashPassword(password, username_password[0][1]);
+
+            if (!encryptedPassword.Equals(username_password[0][0]))
+            {
+                return;
+            }
+
+            string userID = Database.ExecuteSQL("SELECT UserID FROM Users(NOLOCK) WHERE Email = @Email", 
+                new SqlParameter("@Email", email)).ToString();
+
+            Session.Add("LoggedIn", userID);
+
+            Response.Redirect("default.aspx", true);
         }
     }
 }

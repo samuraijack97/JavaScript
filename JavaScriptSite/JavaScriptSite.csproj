@@ -38,6 +38,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net, Version=0.1.4056.18965, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\BCrypt.Net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -59,15 +63,23 @@
   <ItemGroup>
     <Content Include="AboutUs.aspx" />
     <Content Include="App_Themes\Student\WebStyle.css" />
-    <Content Include="bin\BCrypt.Net.dll" />
+    <Content Include="bin\BCrypt.Net.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="bin\JavaScriptSite.dll" />
     <Content Include="bin\JavaScriptSite.pdb" />
+    <Content Include="createtest.aspx" />
     <Content Include="default.aspx" />
+    <Content Include="edittest.aspx" />
+    <Content Include="gradetest.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="SignUp.aspx" />
+    <Content Include="taketest.aspx" />
+    <Content Include="viewtest.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -79,12 +91,33 @@
     <Compile Include="AboutUs.aspx.designer.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>
     </Compile>
+    <Compile Include="createtest.aspx.cs">
+      <DependentUpon>createtest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="createtest.aspx.designer.cs">
+      <DependentUpon>createtest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="edittest.aspx.cs">
+      <DependentUpon>edittest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="edittest.aspx.designer.cs">
+      <DependentUpon>edittest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gradetest.aspx.cs">
+      <DependentUpon>gradetest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gradetest.aspx.designer.cs">
+      <DependentUpon>gradetest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -101,6 +134,27 @@
       <DependentUpon>Master.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignUp.aspx.cs">
+      <DependentUpon>SignUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SignUp.aspx.designer.cs">
+      <DependentUpon>SignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="taketest.aspx.cs">
+      <DependentUpon>taketest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="taketest.aspx.designer.cs">
+      <DependentUpon>taketest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewtest.aspx.cs">
+      <DependentUpon>viewtest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewtest.aspx.designer.cs">
+      <DependentUpon>viewtest.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MasterFiles\Master.Master" />

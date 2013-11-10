@@ -12,16 +12,35 @@ namespace WebApplication3
     {
         protected override void OnInit(EventArgs e)
         {
+            string userID = string.Empty;
+            bool isActive = false;
+
             if (Session["LoggedIn"] != null)
             {
-                int userID = (int)Session["LoggedIn"];
+                userID = Session["LoggedIn"].ToString();
 
-                bool isActive = Convert.ToBoolean(Database.ExecuteSQL("SELECT IsActive FROM Users WHERE UserID = @UserID;", new SqlParameter("@UserID", userID)));
+                isActive = Convert.ToBoolean(Database.ExecuteSQL("SELECT IsActive FROM Users WHERE UserID = @UserID;",
+                    new SqlParameter("@UserID", userID)));
 
                 if (!isActive)
                 {
                     Session.Add("Message", "Your account is not active");
                     Session.Remove("LoggedIn");
+                }
+
+                bool isAdmin = Convert.ToBoolean(Database.ExecuteSQL("SELECT IsAdmin FROM Users(NOLOCK) WHERE UserID = @UserID;",
+                    new SqlParameter("@UserID", userID)));
+
+                if (isAdmin)
+                {
+                    litMenu.Text = "<li><a href='createtest.aspx'><span>Create Test</span></a></li>";
+                    litMenu.Text += "<li><a href='edittest.aspx'><span>Edit Test</span></a></li>";
+                    litMenu.Text += "<li><a href='gradetest.aspx'><span>Grade Test</span></a></li>";
+                }
+                else
+                {
+                    litMenu.Text = "<li><a href='viewtest.aspx'><span>View Test Grades</span></a></li>";
+                    litMenu.Text += "<li><a href='taketest.aspx'><span>Take Test</span></a></li>";
                 }
             }
             else

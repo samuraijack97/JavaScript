@@ -26,7 +26,7 @@
     <form id="form1" runat="server">
         <div id="myDiv">
             <p>Please enter your username and password to login in.</p>
-            <p>UserName: <input type="text" name="userName" value="" /></p>
+            <p>Email: <input type="text" name="email" value="" /></p>
             <p>Password: <asp:TextBox runat="server" TextMode="Password" ID="txtPassword" /></p>
             <p style="float: right;">
                 <asp:Button Text="Login In" runat="server" ID="btnLoginIn" OnClick="btnLoginIn_Click" />
