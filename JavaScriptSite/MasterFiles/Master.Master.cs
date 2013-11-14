@@ -26,6 +26,7 @@ namespace WebApplication3
                 {
                     Session.Add("Message", "Your account is not active");
                     Session.Remove("LoggedIn");
+                    Response.Redirect("Login.aspx", true);
                 }
 
                 bool isAdmin = Convert.ToBoolean(Database.ExecuteSQL("SELECT IsAdmin FROM Users(NOLOCK) WHERE UserID = @UserID;",
