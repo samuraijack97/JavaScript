@@ -69,6 +69,7 @@
     <Content Include="bin\JavaScriptSite.dll" />
     <Content Include="bin\JavaScriptSite.pdb" />
     <Content Include="createtest.aspx" />
+    <Content Include="createtestquestions.aspx" />
     <Content Include="default.aspx" />
     <Content Include="edittest.aspx" />
     <Content Include="gradetest.aspx" />
@@ -97,6 +98,13 @@
     </Compile>
     <Compile Include="createtest.aspx.designer.cs">
       <DependentUpon>createtest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="createtestquestions.aspx.cs">
+      <DependentUpon>createtestquestions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="createtestquestions.aspx.designer.cs">
+      <DependentUpon>createtestquestions.aspx</DependentUpon>
     </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
