@@ -33,8 +33,12 @@ namespace JavaScriptSite
                         return;
                     }
                     int questionID = 0;
-                    questionID = (int)Database.ExecuteSQL("INSERT INTO Questions VALUES (@QuestionText, @QuestionType); SELECT SCOPE_IDENTITY();",
+                    Database.ExecuteSQL("INSERT INTO Questions VALUES (@QuestionText, @QuestionType);",
                         new SqlParameter("@QuestionText", txtQuestion.Text), 
+                        new SqlParameter("@QuestionType", ddlQuestionType.SelectedValue));
+
+                    questionID = (int)Database.ExecuteSQL("SELECT QuestionID FROM Questions(NOLOCK) WHERE QuestionText = @QuestionText AND QuestionType = @QuestionType);",
+                        new SqlParameter("@QuestionText", txtQuestion.Text),
                         new SqlParameter("@QuestionType", ddlQuestionType.SelectedValue));
 
                     int answer1 = 0, answer2 = 0, answer3 = 0, answer4 = 0;
